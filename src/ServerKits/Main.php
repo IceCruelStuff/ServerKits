@@ -22,7 +22,7 @@ use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use pocketmine\item\Item;
 use pocketmine\command\ConsoleCommandSender;
-//MassiveEconomy plugin API
+//EconomyAPI plugin
 use EconomyAPI\EconomyAPI;
 
 class Main extends PluginBase{
@@ -91,19 +91,19 @@ class Main extends PluginBase{
     	$this->getCommand("kit")->setExecutor(new Commands\Kit($this));
     	$this->initializeKitsPermissions();
     	$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-    	//Check if MassiveEconomy is installed
-    	if($this->getServer()->getPluginManager()->getPlugin("MassiveEconomy") != false){
-    		//Checking if MassiveEconomyAPI version is compatible
-    		if(MassiveEconomyAPI::getInstance()->getAPIVersion() == "0.90"){
+    	//Check if EconomyAPI is installed
+    	if($this->getServer()->getPluginManager()->getPlugin("EconomyAPI") != false){
+    		//Checking if EconomyAPI version is compatible
+    		if(EconomyAPI::getInstance()->getAPIVersion() == "3.0.0"){
     			$this->economy = true;
     			Server::getInstance()->getLogger()->info($this->translateColors("&", Main::PREFIX . "&aEconomy support enabled!"));
     		}else{
     			$this->economy = false;
-    			Server::getInstance()->getLogger()->info($this->translateColors("&", Main::PREFIX . "&cEconomy support not available. Please use MassiveEconomy (API v0.90)"));
+    			Server::getInstance()->getLogger()->info($this->translateColors("&", Main::PREFIX . "&cEconomy support not available. Please use EconomyAPI (API v3.0.0)"));
     		}
     	}else{
     		$this->economy = false;
-    		Server::getInstance()->getLogger()->info($this->translateColors("&", Main::PREFIX . "&cEconomy support not available. Please install MassiveEconomy to enable Economy support"));
+    		Server::getInstance()->getLogger()->info($this->translateColors("&", Main::PREFIX . "&cEconomy support not available. Please install EconomyAPI to enable Economy support"));
     	}
     }
     //Config Functions   
@@ -251,7 +251,7 @@ class Main extends PluginBase{
     		}else{
     			//Checking Price & Economy support
     			if($this->economy == true && $this->getKitPrice($kit) != false && $this->getKitPrice($kit) > 0){
-    				$result = MassiveEconomyAPI::getInstance()->takeMoney($player->getName(), $this->getKitPrice($kit));
+    				$result = EconomyAPI::getInstance()->takeMoney($player->getName(), $this->getKitPrice($kit));
     				if($result == 2){
     					//Parse Items
     					$this->parseKitItems($player, $kit);
