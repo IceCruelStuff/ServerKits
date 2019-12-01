@@ -4,7 +4,7 @@ version: 1.0.0
 api: [3.0.0, 4.0.0]
 depend: [EconomyAPI]
 load: STARTUP
-description: Create custom kits for your server by EvolSoft. Updated by IceCruelStuff
+description: A plugin to create custom kits for your server by EvolSoft. Updated by IceCruelStuff.
 website: https://github.com/IceCruelStuff/ServerKits
 
 commands:
