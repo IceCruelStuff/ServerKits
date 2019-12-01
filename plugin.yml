@@ -1,0 +1,47 @@
+name: ServerKits
+main: ServerKits\Main
+version: 1.0.0
+api: [1.9.0]
+depend: [MassiveEconomy]
+load: STARTUP
+description: Create custom kits for your server by EvolSoft. Updated by IceCruelStuff
+website: https://github.com/IceCruelStuff/ServerKits
+
+commands:
+  serverkits:
+    aliases: [skits]
+    description: ServerKits Commands.
+    permission: serverkits
+  kit:
+    description: ServerKits Kit command.
+    permission: serverkits.commands.kit
+permissions:
+  serverkits:
+    default: op
+    description: ServerKits permissions.
+    children:
+      serverkits.kit:
+        default: op
+        description: ServerKits Kit permissions.
+      serverkits.use-sign:
+        default: true
+        description: Allows player to use ServerKits signs.
+      serverkits.create-sign:
+        default: op
+        description: Allows player to create ServerKits signs.
+      serverkits.commands:
+        default: op
+        description: ServerKits commands permissions.
+        children:
+          serverkits.commands.help:
+            default: op
+            description: ServerKits command Help permission.
+          serverkits.commands.info:
+            default: op
+            description: ServerKits command Info permission.
+          serverkits.commands.reload:
+            default: op
+            description: ServerKits command Reload permission.
+          serverkits.commands.kit:
+            default: true
+            description: ServerKits command Kit permission.
