@@ -2,7 +2,7 @@ name: ServerKits
 main: ServerKits\Main
 version: 1.0.0
 api: [3.0.0, 4.0.0]
-depend: [MassiveEconomy]
+depend: [EconomyAPI]
 load: STARTUP
 description: Create custom kits for your server by EvolSoft. Updated by IceCruelStuff
 website: https://github.com/IceCruelStuff/ServerKits
